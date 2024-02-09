@@ -1,4 +1,6 @@
 ﻿using Blasphemous.ModdingAPI;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Blasphemous.CheatConsole;
 
@@ -8,6 +10,9 @@ public class CheatConsole : BlasMod
 
     protected override void OnInitialize()
     {
-        LogError($"{ModInfo.MOD_NAME} has been initialized");
+        InputHandler.RegisterDefaultKeybindings(new Dictionary<string, KeyCode>()
+        {
+            { "Console", KeyCode.Backslash }
+        });
     }
 }
