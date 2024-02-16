@@ -8,19 +8,19 @@
     <Product>Cheat Console</Product>
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
-    <Description>A mod for Blasphemous 1</Description>
-    <Version>0.1.0</Version>
+    <Description>Enables the in-game debug console</Description>
+    <Version>1.0.0</Version>
 
     <TargetName>CheatConsole</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>obj\Release\$(TargetName)</DocumentationFile>
+    <DocumentationFile>bin\Release\$(TargetName).xml</DocumentationFile>
     <RepositoryUrl>https://github.com/BrandenEK/Blasphemous.CheatConsole</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.0.2" />
+    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.1.0" />
     <PackageReference Include="Blasphemous.ModdingReferences" Version="4.0.67" />
   </ItemGroup>
 
