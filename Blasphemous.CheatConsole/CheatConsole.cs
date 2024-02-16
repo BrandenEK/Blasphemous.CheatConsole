@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Blasphemous.CheatConsole;
 
-public class CheatConsole : BlasMod
+internal class CheatConsole : BlasMod
 {
-    public CheatConsole() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+    internal CheatConsole() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
     protected override void OnInitialize()
     {
