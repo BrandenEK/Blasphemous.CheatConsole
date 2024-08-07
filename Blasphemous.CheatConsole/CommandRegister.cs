@@ -20,6 +20,6 @@ public static class CommandRegister
             return;
 
         _commands.Add(command);
-        Main.CheatConsole.Log($"Registered custom command: {command.CommandName}");
+        ModLog.Info($"Registered custom command: {command.CommandName}");
     }
 }
