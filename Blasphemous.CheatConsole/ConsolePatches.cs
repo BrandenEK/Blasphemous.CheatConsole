@@ -1,4 +1,4 @@
-﻿using Framework.Managers;
+﻿using Blasphemous.ModdingAPI.Helpers;
 using Gameplay.UI.Console;
 using Gameplay.UI.Others;
 using Gameplay.UI.Widgets;
@@ -12,7 +12,7 @@ using UnityEngine.UI;
 namespace Blasphemous.CheatConsole;
 
 // Allow access to console
-[HarmonyPatch(typeof(ConsoleWidget), "Update")]
+[HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.Update))]
 class Console_Enable_Patch
 {
     public static void Postfix(ConsoleWidget __instance, bool ___isEnabled)
@@ -25,7 +25,7 @@ class Console_Enable_Patch
 }
 
 // Allow console commands on the main menu
-[HarmonyPatch(typeof(KeepFocus), "Update")]
+[HarmonyPatch(typeof(KeepFocus), nameof(KeepFocus.Update))]
 class KeepFocusMain_Patch
 {
     public static bool Prefix()
@@ -33,28 +33,28 @@ class KeepFocusMain_Patch
         return ConsoleWidget.Instance == null || !ConsoleWidget.Instance.IsEnabled();
     }
 }
-[HarmonyPatch(typeof(ConsoleWidget), "SetEnabled")]
+[HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.SetEnabled))]
 class Console_Disable_Patch
 {
     public static void Postfix(bool enabled)
     {
-        if (!enabled && Core.LevelManager.currentLevel.LevelName == "MainMenu")
+        if (enabled || !SceneHelper.MenuSceneLoaded)
+            return;
+
+        Button[] buttons = Object.FindObjectsOfType<Button>();
+        foreach (Button b in buttons)
         {
-            Button[] buttons = Object.FindObjectsOfType<Button>();
-            foreach (Button b in buttons)
+            if (b.name == "Continue")
             {
-                if (b.name == "Continue")
-                {
-                    EventSystem.current.SetSelectedGameObject(b.gameObject);
-                    return;
-                }
+                EventSystem.current.SetSelectedGameObject(b.gameObject);
+                return;
             }
         }
     }
 }
 
 // Add custom mod commands to the console
-[HarmonyPatch(typeof(ConsoleWidget), "InitializeCommands")]
+[HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.InitializeCommands))]
 class Console_Initialize_Patch
 {
     public static void Postfix(List<ConsoleCommand> ___commands)
