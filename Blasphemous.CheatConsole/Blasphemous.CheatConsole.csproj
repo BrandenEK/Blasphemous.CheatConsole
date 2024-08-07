@@ -9,7 +9,7 @@
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
     <Description>Enables the in-game debug console</Description>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
 
     <TargetName>CheatConsole</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
