@@ -22,7 +22,8 @@ internal class ModCommandSystem(ModCommand command) : ConsoleCommand
 
     public override void Execute(string cmd, string[] parameters)
     {
-        if (cmd == null || cmd != command.CommandName) return;
+        if (cmd == null || cmd != command.CommandName)
+            return;
 
         string subcommand = GetSubcommand(parameters, out List<string> paramList);
         command.ProcessCommand(Console, subcommand, paramList.ToArray());
