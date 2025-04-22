@@ -12,5 +12,6 @@
 - Temporary documentation can be found [here](https://github.com/BrandenEK/Blasphemous-Modding-API/blob/main/docs/development/console.md)
 
 ## Installation
-This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer)
-- Required dependencies: Modding API
+This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer) <br>
+Required dependencies:
+- [Modding API](https://github.com/BrandenEK/Blasphemous.ModdingAPI)
