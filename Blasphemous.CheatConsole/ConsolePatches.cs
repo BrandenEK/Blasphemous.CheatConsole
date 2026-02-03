@@ -13,7 +13,7 @@ namespace Blasphemous.CheatConsole;
 
 // Allow access to console
 [HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.Update))]
-class Console_Enable_Patch
+class ConsoleWidget_Update_Patch
 {
     public static void Postfix(ConsoleWidget __instance, bool ___isEnabled)
     {
@@ -26,7 +26,7 @@ class Console_Enable_Patch
 
 // Allow console commands on the main menu
 [HarmonyPatch(typeof(KeepFocus), nameof(KeepFocus.Update))]
-class KeepFocusMain_Patch
+class KeepFocus_Update_Patch
 {
     public static bool Prefix()
     {
@@ -34,7 +34,7 @@ class KeepFocusMain_Patch
     }
 }
 [HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.SetEnabled))]
-class Console_Disable_Patch
+class ConsoleWidget_SetEnabled_Patch
 {
     public static void Postfix(bool enabled)
     {
@@ -55,7 +55,7 @@ class Console_Disable_Patch
 
 // Add custom mod commands to the console
 [HarmonyPatch(typeof(ConsoleWidget), nameof(ConsoleWidget.InitializeCommands))]
-class Console_Initialize_Patch
+class ConsoleWidget_InitializeCommands_Patch
 {
     public static void Postfix(List<ConsoleCommand> ___commands)
     {
